@@ -1,0 +1,149 @@
+body {
+    margin:auto;
+    padding:1%;
+    max-width:900px;
+    background-color:rgba(112, 128, 144, .3);
+    color:rgb(112, 128, 144);
+}
+
+h1 {
+    padding:.0em 0.5em;
+    border-bottom: double 6px rgba(112, 128, 144);
+    margin-bottom:0;
+}
+
+h2 {
+    position:relative;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+}
+
+h2:before {
+    content:'';
+    margin-right:1%;
+    border-left:double 8px rgba(112, 128, 144);
+}
+
+h3 {
+    position:relative;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+}
+
+h3:before {
+    content:'';
+    margin-right:1%;
+    border-left:solid 4px rgba(112, 128, 144);
+}
+
+h4 {
+    position:relative;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+}
+
+h4:before {
+    content:'';
+    margin-right:1%;
+    border-left:solid 2px rgba(112, 128, 144);
+}
+
+p {
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+}
+
+i {
+    padding-left:.75em;
+    padding-right:.75em;
+}
+
+a {
+    padding:0;
+    text-decoration: underline;
+}
+
+li {
+  list-style-position: inside;
+}
+
+ul {
+    list-style-type: disc;
+}
+
+ol {
+    list-style-type: decimal;
+}
+
+li ul {
+    list-style-type: square;
+    margin-left: 2.5%;
+}
+
+li ul li ul {
+    list-style-type: circle;
+    margin-left: 2.5%;
+}
+
+hr {
+    margin:auto;
+    height:0px;
+    border-radius:2px;
+    border:0.5px solid rgba(112, 128, 144, .3);
+}
+
+
+article {
+    margin:1% 0;
+    padding:1%;
+    border-radius:3px;
+    border:solid 2px rgba(112, 128, 144);
+}
+
+code {
+    margin-left:0.5%;
+    margin-right:0.5%;
+    padding-left:0.5%;
+    padding-right:0.5%;
+    border-radius:3px;
+    border:inset 1px rgba(112, 128, 144);
+}
+
+pre {
+    margin:1%;
+    padding:1%;
+    width: auto;
+    white-space: pre-wrap;
+    border-top:inset 2px rgba(112, 128, 144);
+    border-bottom:inset 2px rgba(112, 128, 144);
+}
+
+pre code {
+    padding:0.5%;
+    border: none;
+    overflow: scroll;
+}
+
+table {
+    margin:1%;
+    padding:5%;
+    width: 100%;
+    display: content;
+    border:solid 1px rgba(112, 128, 144);
+}
+
+th {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border:solid 1px rgba(112, 128, 144);
+    background-color: rgb(112, 128, 144);
+    color: #d3d8dd;
+}
+
+td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border:solid 1px rgba(112, 128, 144);
+}
