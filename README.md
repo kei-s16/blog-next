@@ -9,7 +9,6 @@ WIP
 
 ### 開発環境の起動
 ```zsh
-$ cp .env.development .env
 $ corepack enable
 $ pnpm install
 $ pnpm run dev
