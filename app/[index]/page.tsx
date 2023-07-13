@@ -1,8 +1,19 @@
-import type { NextPage } from "next";
+import type { NextPage, Metadata} from "next";
 import Link from "next/link";
 import { redirect } from 'next/navigation'
 import Card from "modules/article/components/card";
 import { getCurrentPage } from "modules/pages/functions";
+
+const SITE_DOMAIN = process.env.SITE_DOMAIN ? process.env.SITE_DOMAIN : "blog.k16em.net";
+
+export const metadata: Metadata = {
+  title: SITE_DOMAIN,
+  description: 'k16emのブログ',
+  openGraph: {
+    title: SITE_DOMAIN,
+    description: 'k16emのブログ',
+  }
+}
 
 const Contents: NextPage = ({ params }: { params: { index: number } }) => {
   if (params.index == 1) {
