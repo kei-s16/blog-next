@@ -46,4 +46,4 @@ jobs:
         run: pnpm install
 
       - name: "textlintの実行"
-        run: npx textlint ./contents
+        run: npx textlint $TARGET_FILES
