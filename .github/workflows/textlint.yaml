@@ -17,7 +17,7 @@ jobs:
       - name: "fetchする"
         run: git fetch
       - name: "差分のあるmarkdownファイルのみリストアップ"
-        run: echo "TARGET_FILES=$(git diff --name-only origin/main HEAD | grep -E '\.md$')" >> $GITHUB_OUTPUT
+        run: echo "TARGET_FILES=\"$(git diff --name-only origin/main HEAD | grep -E '\.md$' | sed -z "s/\n/ /g")\"" >> $GITHUB_OUTPUT
       - name: "テスト"
         run: echo $TARGET_FILES
 
