@@ -1,9 +1,7 @@
 # blog-next
 ## これはなにか
 [kei-s16/kei-s16.github.io](https://github.com/kei-s16/kei-s16.github.io)をNext.jsで置き換えようとしているやつ  
-WIP。
-
-ほげぴよ.
+WIP
 
 ## 環境構築
 ### 必要なツール
