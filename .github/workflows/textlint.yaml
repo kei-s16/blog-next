@@ -2,6 +2,9 @@ name: "日本語のlintをかける"
 
 on:
   pull_request:
+    paths:
+      - "./contents/*.md"
+      - "README.md"
 
 jobs:
   textlint:
@@ -11,10 +14,10 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 2
+      - name: "差分のあるmarkdownファイルのみリストアップ"
+        run: echo "TARGET_FILES=$(git diff --name-only)" >> $GITHUB_OUTPUT
       - name: "テスト"
-        run: echo $HEAD_REF
-        env:
-          HEAD_REF: ${{ github.head_ref }}
+        run: echo $TARGET_FILES
 
       - name: "Node.jsのセットアップ"
         uses: actions/setup-node@v3
