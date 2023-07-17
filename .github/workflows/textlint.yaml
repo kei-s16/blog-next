@@ -15,7 +15,9 @@ jobs:
         with:
           fetch-depth: 2
       - name: "差分のあるmarkdownファイルのみリストアップ"
-        run: echo "TARGET_FILES=$(git diff --name-only)" >> $GITHUB_OUTPUT
+        run: |
+          result=`git diff --name-only main | grep -E "\.md$"` && \ 
+          echo "TARGET_FILES=${result}" >> $GITHUB_OUTPUT
       - name: "テスト"
         run: echo $TARGET_FILES
 
