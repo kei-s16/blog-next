@@ -14,9 +14,10 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 2
+      - name: "fetchする"
+        run: git fetch
       - name: "差分のあるmarkdownファイルのみリストアップ"
         run: |
-          git fetch && \ 
           result=`git diff --name-only origin/main HEAD | grep -E "\.md$"` && \ 
           echo "TARGET_FILES=${result}" >> $GITHUB_OUTPUT
       - name: "テスト"
