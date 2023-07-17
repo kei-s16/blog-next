@@ -1,7 +1,7 @@
 name: "日本語のlintをかける"
 
 on:
-  push:
+  pull_request:
 
 jobs:
   textlint:
@@ -9,6 +9,12 @@ jobs:
     steps:
       - name: "checkoutする"
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - name: "テスト"
+        run: echo $HEAD_REF
+        env:
+          HEAD_REF: ${{ github.head_ref }}
 
       - name: "Node.jsのセットアップ"
         uses: actions/setup-node@v3
