@@ -1,0 +1,55 @@
+name: "日本語のlintをかける"
+
+on:
+  pull_request:
+    paths:
+      - "./contents/*.md"
+      - "README.md"
+
+jobs:
+  textlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "checkoutする"
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - name: "fetchする"
+        run: git fetch
+
+      - name: "Node.jsのセットアップ"
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: "pnpmのセットアップ"
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 8
+          run_install: false
+      - name: "reviewdogのインストール"
+        uses: reviewdog/action-setup@v1
+        with:
+          reviewdog_version: latest
+
+      - name: "pnpmのパッケージ保存先を保持"
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - name: "キャッシュを使う"
+        uses: actions/cache@v3
+        id: pnpm-cache-node_modules
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-node_modules-
+      - name: "パッケージのインストール"
+        run: pnpm install
+
+      - name: "textlintの実行 with reviewdog"
+        run: |
+          npx textlint -f checkstyle $(git diff --name-only origin/main HEAD | grep -E '\.md$' | sed -z "s/\n/ /g") | reviewdog -f checkstyle --name=textlint -reporter=github-pr-review
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
