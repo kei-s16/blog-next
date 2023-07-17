@@ -1,0 +1,42 @@
+name: "日本語のlintをかける"
+
+on:
+  push:
+    paths:
+      - "./contents/*.md"
+
+jobs:
+  textlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "checkoutする"
+        uses: actions/checkout@v3
+
+      - name: "Node.jsのセットアップ"
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: "pnpmのセットアップ"
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 8
+          run_install: false
+
+      - name: "pnpmのパッケージ保存先を保持"
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - name: "キャッシュを使う"
+        uses: actions/cache@v3
+        id: pnpm-cache-node_modules
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-node_modules-
+      - name: "パッケージのインストール"
+        run: pnpm install
+
+      - name: "textlintの実行"
+        run: npx textlint ./contents
