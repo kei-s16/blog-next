@@ -37,7 +37,7 @@ const Article: NextPage = ({ params }: { params: { slug: string } }) => {
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
-        className="hyphens-auto"
+        className="hyphens-auto content"
       >
         {post.body.raw}
       </ReactMarkdown>
