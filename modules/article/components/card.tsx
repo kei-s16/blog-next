@@ -37,7 +37,7 @@ const Card: React.FC<CardProps> = ({
           <ul className="flex flex-row">
             {tags.map((tag) => (
               <li className="mr-2">
-                <Link href="#">{tag}</Link>
+                <Link href={`/tags/${encodeURIComponent(tag)}`}>{tag}</Link>
               </li>
             ))}
           </ul>
