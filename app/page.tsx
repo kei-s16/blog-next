@@ -15,8 +15,9 @@ export const metadata: Metadata = {
   }
 }
 
-const Home: NextPage = () => {
-  const { posts, prev, next } = getCurrentPage(TOP_PAGE_INDEX);
+const Home: NextPage = ({ searchParams }: { searchParams: { page: number } }) => {
+  const index = 1 < searchParams.page ? searchParams.page - 1 : TOP_PAGE_INDEX;
+  const { posts, prev, next } = getCurrentPage(index);
 
   return (
     <>
@@ -26,9 +27,9 @@ const Home: NextPage = () => {
         ))}
       </div>
       <div className="flex flex-row content-center justify-center">
-          <div className="basis-1/3 rounded-lg flex items-center justify-center">{prev && <Link href={`/${prev}`}>previous</Link>}</div>
-          <div className="basis-1/3 rounded-lg flex items-center justify-center"><p>◆</p></div>
-          <div className="basis-1/3 rounded-lg flex items-center justify-center">{next && <Link href={`/${next}`}>next</Link>}</div>
+          <div className="basis-1/3 rounded-lg flex items-center justify-center">{prev && <Link href={`/?page=${prev}`}>previous</Link>}</div>
+          <div className="basis-1/3 rounded-lg flex items-center justify-center"><Link href="/">◆</Link></div>
+          <div className="basis-1/3 rounded-lg flex items-center justify-center">{next && <Link href={`/?page=${next}`}>next</Link>}</div>
       </div>
     </>
   );
