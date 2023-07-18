@@ -1,6 +1,8 @@
 ---
 title: "Github PagesにHugoをデプロイする"
 date: "2022-02-21T01:00:00"
+tags: ["Hugo", "GitHub"]
+category: "技術"
 ---
 
 ## 目次

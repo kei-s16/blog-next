@@ -1,6 +1,8 @@
 ---
 title: "2021年のふりかえり"
 date: "2021-12-31T20:00:00"
+tags: ["ふりかえり"]
+category: "日記"
 ---
 
 移植 : https://gist.github.com/kei-s16/b84ab3aa76c47d3adf84c540c3c39f98

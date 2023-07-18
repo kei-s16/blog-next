@@ -1,6 +1,8 @@
 ---
 title: "systemctl timer unitを使ってcronを置き換えたときのメモ"
 date: "2020-06-17T20:00:00"
+tags: ["linux", "systemd", "メモ"]
+category: "技術"
 ---
 
 移植 : https://gist.github.com/kei-s16/eb5eb5f6657e17eb8e9a422c167e62e0
