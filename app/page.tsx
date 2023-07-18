@@ -28,7 +28,7 @@ const Home: NextPage = ({ searchParams }: { searchParams: { page: number } }) =>
       </div>
       <div className="flex flex-row content-center justify-center">
           <div className="basis-1/3 rounded-lg flex items-center justify-center">{prev && <Link href={`/?page=${prev}`}>previous</Link>}</div>
-          <div className="basis-1/3 rounded-lg flex items-center justify-center"><p>◆</p></div>
+          <div className="basis-1/3 rounded-lg flex items-center justify-center"><Link href="/">◆</Link></div>
           <div className="basis-1/3 rounded-lg flex items-center justify-center">{next && <Link href={`/?page=${next}`}>next</Link>}</div>
       </div>
     </>
