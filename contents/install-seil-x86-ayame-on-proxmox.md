@@ -1,6 +1,8 @@
 ---
 title: "SEIL/x86 AyameをProxmoxにインストールする"
 date: "2023-01-15T20:15:00"
+tags: ["メモ", "Proxmox", "SEILx86"]
+category: "技術"
 ---
 
 ## これはなんだ

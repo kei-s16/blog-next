@@ -1,6 +1,8 @@
 ---
 title: "k8s Cluster on Raspberry Pi"
 date: "2021-02-10T20:00:00"
+tags: ["raspberrypi", "k8s", "archlinuxarm"]
+category: "技術"
 ---
 
 [kei-s16/k8s-arch-rpi-cluster.md](https://gist.github.com/kei-s16/91cc87b127f38cfed28fe625ae8c9ba9) を元に加筆・修正を行ったものです  

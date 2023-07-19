@@ -1,6 +1,8 @@
 ---
 title: "Dockerfileを書いてみよう"
 date: "2022-03-28T02:30:00"
+tags: ["docker"]
+category: "技術"
 ---
 
 ## はじめに

@@ -2,6 +2,8 @@
 title: "2023年 令和最新版 archlinux インストールオレオレ手順"
 date: "2023-01-14T14:30:00"
 description: "ARCHLINUXINSTALLBATTLE"
+tags: ["archlinux", "メモ"]
+category: "技術"
 ---
 
 ## これはなにか

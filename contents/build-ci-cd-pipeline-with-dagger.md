@@ -2,6 +2,8 @@
 title: "Dagger.ioを使ってみた"
 date: "2022-11-21T00:00:00"
 description: "CI/CDツールのDagger.ioについて、使い方や使用感について書いています"
+tags: ["Dagger.io", "GitHub", "Go"]
+category: "技術"
 ---
 
 ## 前置き

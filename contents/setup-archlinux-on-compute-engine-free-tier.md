@@ -1,6 +1,8 @@
 ---
 title: "GCP Compute Engineの永久無料枠でarchlinuxを起動する"
 date: "2022-08-11T16:00:00"
+tags: ["archlinux", "gcp"]
+category: "技術"
 ---
 
 ## 前置き

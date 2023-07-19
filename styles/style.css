@@ -65,24 +65,24 @@ a {
     text-decoration: underline;
 }
 
-li {
+.content li {
   list-style-position: inside;
 }
 
-ul {
+.content ul {
     list-style-type: disc;
 }
 
-ol {
+.content ol {
     list-style-type: decimal;
 }
 
-li ul {
+.content li ul {
     list-style-type: square;
     margin-left: 2.5%;
 }
 
-li ul li ul {
+.content li ul li ul {
     list-style-type: circle;
     margin-left: 2.5%;
 }

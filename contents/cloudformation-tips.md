@@ -1,6 +1,8 @@
 ---
 title: "Cloudformationの小技"
 date: "2022-09-02T00:00:00"
+tags: ["AWS", "Cloudformation", "メモ"]
+category: "技術"
 ---
 
 最近Cloudformationを書く機会が増えて~~terraformではなにも考えなくてもよかったのにCloudformationだとものによってはDependsOnを使って依存関係を明示的に指定してあげる必要があったりだとか、おなじCloudformationでもSAMだと方言がつらかったりだとかする現実と戦わなければいけないハメにあって~~いて、それに伴い小技みたいなものを人に話す機会も増えたので、メモしておく。  
