@@ -15,11 +15,12 @@ export function getCurrentPage (currentPageIndex: number) {
   const tail: number = head + MAX_ARTICLE_PER_PAGE;
 
   const slicedPage: Post[] = posts.slice(head, tail);
+  const nextPage: Post[] = posts.slice(tail, tail + MAX_ARTICLE_PER_PAGE);
 
   return {
     posts: slicedPage,
     prev: 0 < (currentPageIndex - 1) ? currentPageIndex : currentPageIndex === 1 ? 1 : null,
-    next: posts[tail + 1] ? currentPageIndex + 2 : null
+    next: nextPage.length != 0 ? currentPageIndex + 2 : null
   };
 }
 
@@ -37,11 +38,12 @@ export function getCurrentTagPage (tag: string, currentPageIndex: number) {
   const tail: number = head + MAX_ARTICLE_PER_PAGE;
 
   const slicedPage: Post[] = posts.slice(head, tail);
+  const nextPage: Post[] = posts.slice(tail, tail + MAX_ARTICLE_PER_PAGE);
 
   return {
     posts: slicedPage,
     prev: 0 < (currentPageIndex - 1) ? currentPageIndex : currentPageIndex === 1 ? 1 : null,
-    next: posts[tail + 1] ? currentPageIndex + 2 : null
+    next: nextPage.length != 0 ? currentPageIndex + 2 : null
   };
 }
 
