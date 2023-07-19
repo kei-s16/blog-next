@@ -54,7 +54,6 @@ export function getCurrentTagPage (tag: string, currentPageIndex: number) {
  * @return 現在のページに表示する記事の配列
  */
 export function getCurrentCategoryPage (category: string, currentPageIndex: number) {
-  console.log(category)
   const posts: Post[] = allPosts
     .filter((post) => post.category === category)
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
