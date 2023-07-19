@@ -31,7 +31,7 @@ const Card: React.FC<CardProps> = ({
         </header>
         <div className="flex flex-row">
           <p className="mr-2 my-0 p-0">
-            <span className="font-medium">category</span> : <Link href="#">{category}</Link>
+            <span className="font-medium">category</span> : <Link href={`/categories/${encodeURIComponent(category)}`}>{category}</Link>
           </p>
           <p className="mr-2 my-0 p-0 font-medium">tags : </p>
           <ul className="flex flex-row">
