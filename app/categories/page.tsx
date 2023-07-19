@@ -20,7 +20,7 @@ const Home: NextPage = () => {
     <>
       <ul>
         {categories.map((category) => (
-          <li>
+          <li key={category}>
             <Link href={`/categories/${encodeURIComponent(category)}`}>{category}</Link>
           </li>
         ))}

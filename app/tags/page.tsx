@@ -20,7 +20,7 @@ const Home: NextPage = () => {
     <>
       <ul>
         {tags.map((tag) => (
-          <li>
+          <li key={tag}>
             <Link href={`/tags/${encodeURIComponent(tag)}`}>{tag}</Link>
           </li>
         ))}
