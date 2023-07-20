@@ -1,6 +1,6 @@
+import { compareDesc } from 'date-fns';
 import Rss from "rss";
 import { allPosts, Post } from 'contentlayer/generated';
-import { compareDesc } from 'date-fns';
 
 const SITE_DOMAIN = process.env.SITE_DOMAIN ? process.env.SITE_DOMAIN : "blog.k16em.net";
 const SITE_NAME = process.env.SITE_NAME ? process.env.SITE_NAME : "blog.k16em.net";
