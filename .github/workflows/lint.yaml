@@ -39,7 +39,6 @@ jobs:
         with:
           path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
           key: ${{ runner.os }}-node_modules-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: ${{ runner.os }}-node_modules-
       - name: "パッケージのインストール"
         run: pnpm install
 
