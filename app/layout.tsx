@@ -4,6 +4,8 @@ import { Suspense } from "react";
 import "styles/globals.css";
 import "styles/style.css";
 
+const SITE_NAME = process.env.SITE_NAME ? process.env.SITE_NAME : "blog.k16em.net";
+
 export default async function RootLayout({
   children,
 }: {
@@ -12,14 +14,14 @@ export default async function RootLayout({
   return (
     <html lang="ja">
       <Head>
-        <title>blog</title>
+        <title>{SITE_NAME}</title>
         <meta name="description" content="blog description" />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <script data-goatcounter="https://k16em.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
       </Head>
       <body className="space-y-4">
         <header>
-        <h1><Link href="/" className="no-underline">blog(unstable)</Link></h1>
+        <h1><Link href="/" className="no-underline">{SITE_NAME}</Link></h1>
         </header>
         <Suspense fallback={null}>{children}</Suspense>
         <footer>
