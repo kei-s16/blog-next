@@ -15,6 +15,7 @@ export default async function RootLayout({
         <title>blog</title>
         <meta name="description" content="blog description" />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <script data-goatcounter="https://k16em.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
       </Head>
       <body className="space-y-4">
         <header>
