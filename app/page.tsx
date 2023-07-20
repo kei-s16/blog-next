@@ -1,6 +1,6 @@
 import type { NextPage, Metadata} from "next";
-import Card from "modules/article/components/card";
 import Link from "next/link";
+import Card from "modules/article/components/card";
 import { getCurrentPage } from "modules/pages/functions";
 
 const TOP_PAGE_INDEX = 0;
