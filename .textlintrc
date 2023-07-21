@@ -3,7 +3,7 @@
   "rules": {
     "preset-ja-technical-writing": {
       "sentence-length": {
-        "max": 90
+        "max": 140
       },
       "arabic-kanji-numbers": true,
       "ja-no-weak-phrase": false,
