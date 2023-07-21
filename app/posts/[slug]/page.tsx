@@ -1,5 +1,6 @@
 import { format, parseISO } from 'date-fns';
 import type { NextPage, Metadata, ResolvingMetadata } from "next";
+import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from "remark-gfm";
@@ -27,23 +28,44 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
 }
 
 const Article: NextPage = ({ params }: { params: { slug: string } }) => {
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug)
+  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`)
+
+  const {title, date, category, tags, description, body} = {...post};
 
   return (
     <>
       <header>
-        <h2 className="text-xl font-bold">{post.title}</h2>
-        <p>{format(parseISO(post.date), 'LLLL d, yyyy')}</p>
+        <div className="flex flex-row">
+          <h3 className="basis-3/4 text-lg">
+            {title}
+          </h3>
+          <p className="basis-1/4 text-xs text-right">{format(parseISO(date), 'LLLL d, yyyy')}</p>
+        </div>
+        <div className="flex flex-row">
+          <p className="mr-2 my-0 p-0">
+            <span className="font-medium">category</span> : <Link href={`/categories/${encodeURIComponent(category)}`}>{category}</Link>
+          </p>
+          <p className="mr-2 my-0 p-0 font-medium">tags : </p>
+          <ul className="flex flex-row">
+            {tags.map((tag) => (
+              <li className="mr-2">
+                <Link href={`/tags/${encodeURIComponent(tag)}`}>{tag}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        {description && 
+            <p><span className="font-medium">description</span> : {description}</p>
+        }
+        <hr />
       </header>
-      <hr />
-      {post.description && <p>{post.description}</p>}
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
         className="hyphens-auto content"
       >
-        {post.body.raw}
+        {body.raw}
       </ReactMarkdown>
     </>
   );
