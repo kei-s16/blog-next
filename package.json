@@ -35,7 +35,7 @@
     "textlint-rule-no-dropping-the-ra": "^3.0.0",
     "textlint-rule-preset-ja-technical-writing": "^8.0.0",
     "textlint-rule-preset-jtf-style": "^2.3.13",
-    "vite": "^4.4.3"
+    "vite": "^4.5.2"
   },
   "devDependencies": {
     "@types/node": "18.16.3",
