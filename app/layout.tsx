@@ -1,8 +1,15 @@
+import { Zen_Kurenaido } from 'next/font/google'
 import Head from "next/head";
 import Link from "next/link";
 import { Suspense } from "react";
 import "styles/globals.css";
 import "styles/style.css";
+ 
+const zenKurenaido = Zen_Kurenaido({
+  subsets: ['latin'],
+  weight: '400',
+  style: 'normal',
+})
 
 const SITE_NAME = process.env.SITE_NAME ? process.env.SITE_NAME : "blog.k16em.net";
 
@@ -12,7 +19,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ja">
+    <html lang="ja" className={zenKurenaido.className}>
       <Head>
         <title>{SITE_NAME}</title>
         <meta name="description" content="blog description" />
