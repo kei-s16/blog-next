@@ -53,7 +53,7 @@ category: "技術"
 buildxを使うことで、イメージビルド時の機能が拡張され、[ビルド処理の並列化や差分を検知してのビルドの省略などが行えるようになります](https://docs.docker.com/build/buildkit/)。
 後述の `docker/build-push-action` がbuildxに依存しているため、前段でこのactionsを実行してあげる必要があります。
 
-Windows/Macの場合、最近の Docker Desktop に `buildx` がバンドルされているので特別なことをしなくても使用できるのですが、Linux環境では `docker` コマンドとは別にインストールする必要があります。
+Windows/Macの場合、最近のDocker Desktopに `buildx` がバンドルされているので特別なことをしなくても使用できるのですが、Linux環境では `docker` コマンドとは別にインストールする必要があります。
 `docker/setup-buildx-action` は、`buildx` のインストールや設定などを抽象化してくれるため、便利です。
 
 ### docker/metadata-action

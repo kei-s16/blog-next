@@ -18,7 +18,7 @@ category: "技術"
 - [kayac/ecspresso](https://github.com/kayac/ecspresso) を使うと便利
 
 ## はじめに
-私の所属するチームでは [Amazon ECS](https://aws.amazon.com/jp/ecs/) on Fargate で稼動しているサービスを開発しています。
+私の所属するチームでは [Amazon ECS](https://aws.amazon.com/jp/ecs/) on Fargateで稼動しているサービスを開発しています。
 ECS on Fargateを選択することで、[サーバ自体の管理はAWSにお任せできるため、アプリケーションやその周辺リソースのみに集中すればよいため](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/bestpracticesguide/security-shared.html)、開発者として体験がよく、また運用の負荷も低いです。
 少し大変なのが初期構築とデプロイなのですが、デプロイについては [kayac/ecspresso](https://github.com/kayac/ecspresso) を使うと簡単にできるようになります。
 
@@ -135,7 +135,7 @@ ecspressoでデプロイを行うには、以下のファイルが必要です�
 - タスク定義のテンプレートファイル
     - ecspressoがアップロードするために必要になります。
     - jsonかyamlの任意の形式で用意します。
-    - [Goの text/template 構文](https://github.com/kayac/ecspresso#template-syntax) でenvなどからパラメータを後付けすることができます。
+    - [Goの text/template 構文](https://github.com/kayac/ecspresso#template-syntax) でenvなどからパラメータを後付けできます。
     - [AWSの公式ドキュメント](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/example_task_definitions.html)を参考に書くのがおすすめです。
 
 ##### サンプル
@@ -150,7 +150,7 @@ task_definition: ecs-task-def.json
 timeout: 15m0s
 ```
 
-ecs-task-def.json は、以下のように設定します。
+ecs-task-def.jsonは、以下のように設定します。
 [AWSの公式ドキュメント](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/example_task_definitions.html) を参考に各パラメータをいったんベタ書きで設定したあと、環境ごとに変更したい値やリポジトリで管理したくない値については環境変数から受け取るテンプレート構文に置き換えると楽です。
 
 ```deploy/ecs-task-def.json
