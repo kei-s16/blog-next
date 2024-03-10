@@ -11,14 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "checkoutする"
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: "Node.jsのセットアップ"
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20
       - name: "pnpmのセットアップ"
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v3
         id: pnpm-install
         with:
           version: 8
@@ -34,7 +34,7 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
       - name: "キャッシュを使う"
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: pnpm-cache-node_modules
         with:
           path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
