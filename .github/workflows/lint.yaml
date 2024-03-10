@@ -3,8 +3,8 @@ name: "next lintをかける"
 on:
   pull_request:
     paths:
-      - **/*.ts
-      - **/*.tsx
+      - "**/*.ts"
+      - "**/*.tsx"
 
 jobs:
   nextlint:
