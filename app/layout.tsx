@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import "styles/globals.css";
 import "styles/style.css";
- 
+
 const zenKurenaido = Zen_Kurenaido({
   subsets: ['latin'],
   weight: '400',
@@ -22,7 +22,6 @@ export default async function RootLayout({
     <html lang="ja" className={zenKurenaido.className}>
       <Head>
         <title>{SITE_NAME}</title>
-        <meta name="description" content="blog description" />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <script data-goatcounter="https://k16em.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
       </Head>

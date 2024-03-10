@@ -1,6 +1,5 @@
 import { format, parseISO } from 'date-fns';
 import type { NextPage } from "next";
-import Head from "next/head";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from 'rehype-raw'
@@ -8,7 +7,6 @@ import remarkGfm from "remark-gfm";
 import { allPosts } from 'contentlayer/generated';
 
 const SITE_DOMAIN = process.env.SITE_DOMAIN ? process.env.SITE_DOMAIN : "blog.k16em.net";
-const SITE_NAME = process.env.SITE_NAME ? process.env.SITE_NAME : "blog.k16em.net";
 
 export const generateStaticParams = async () => allPosts.map((post) => ({ slug: post._raw.flattenedPath }))
 
