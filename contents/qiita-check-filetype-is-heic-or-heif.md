@@ -7,7 +7,7 @@ category: "技術"
 ---
 
 この記事は以前Qiitaにて公開したものになります。  
-元記事はこちら : [heic/heifの判定をしてみたのでJSでの実装を公開する](https://qiita.com/_kei_s/items/54bbbf3af6cf7b5fc88e)
+元記事はこちら : [heic/heifの判定をしてみたのでJSでの実装を公開する](https://qiita.com/_kei_s/items/54bbbf3af6cf7b5fc88e)  
 
 <hr>
 

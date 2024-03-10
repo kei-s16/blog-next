@@ -5,8 +5,9 @@ description: "ENTRYPOINTの中でボリュームの所有権をがちゃがち�
 tags: ["Qiita", "Docker", "docker-compose"]
 category: "技術"
 ---
+
 この記事は以前Qiitaにて公開したものになります。  
-元記事はこちら : [Dockerボリュームをマウントしたときの所有者問題を回避したい](https://qiita.com/_kei_s/items/393059ca6d04edd02724)
+元記事はこちら : [Dockerボリュームをマウントしたときの所有者問題を回避したい](https://qiita.com/_kei_s/items/393059ca6d04edd02724)  
 
 <hr>
 
