@@ -40,7 +40,7 @@ volumes:
 この記事では
 
 - そもそも何が起きているのか?
-- 所有者問題にぶつかったときにどうするか
+- 所有者問題にぶつかったとき、どうするか
 
 について説明します
 
@@ -96,7 +96,8 @@ total 0
 drwxr-xr-x    1 root     root             0 May 31 01:01 inbox
 ```
 
-`Mailhog` は `mailhog` ユーザによって実行されていますが、`Mailhog` がデータを保存するための `/mailhog/inbox` ディレクトリは `root` ユーザが所有しており、それ以外のユーザは `inbox` に対して書き込みができないことがわかります。
+`Mailhog` は `mailhog` ユーザによって実行されています。  
+しかし、`Mailhog` がデータを保存するための `/mailhog/inbox` ディレクトリは `root` ユーザが所有しており、それ以外のユーザは `inbox` に対して書き込みできないことがわかります。
 
 なぜ `root` になってしまうかというと、コンテナがマウントするvolumesの置き場所がデフォルトでは `/var/lib/docker` にあり、ここの所有者情報を引き継いでしまうからです(詳細は[公式ドキュメントを参照](https://docs.docker.com/storage/volumes/))。
 
@@ -146,7 +147,7 @@ services:
 3. CMDがDockerfileかcompose.yamlに設定されていれば実行
     - ただし、[Entrypointの書き方によってはCMDが設定されていても実行されない可能性あり](https://docs.docker.jp/engine/reference/builder.html#cmd-entrypoint)
 
-2のEntrypoint実行のタイミングがボリューム周辺に介入できるポイントになります。
+上記フローのEntrypoint実行のタイミングでボリューム周辺に介入できます。
 Entrypointに所有者を変更する処理(`chown`)を挟むことで、当該ディレクトリの所有者を実行ユーザに渡すことができます。
 
 ```diff_yaml
