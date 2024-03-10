@@ -3,8 +3,8 @@ name: "日本語のlintをかける"
 on:
   pull_request:
     paths:
-      - "./contents/*.md"
-      - "README.md"
+      - contents/*.md
+      - README.md
 
 jobs:
   textlint:
