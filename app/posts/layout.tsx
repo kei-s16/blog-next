@@ -6,7 +6,5 @@ export default async function PostLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-      <>{children}</>
-  );
+  return <>{children}</>;
 }
