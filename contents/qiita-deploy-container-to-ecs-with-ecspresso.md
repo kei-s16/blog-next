@@ -72,7 +72,8 @@ ECSのデプロイは、以下のようなフローで実施されます。
 - ECSのタスク定義
 - ECSのサービスが参照するタスク定義
 
-の3つの登場人物がおり、それぞれの更新が必要なことがわかります。
+の3つの登場人物が存在します。
+そして、それぞれに更新をかける必要があります。
 
 タスク定義とサービスについては馴染みのない方も多いと思います。
 そこで、ローカル開発環境でよく採用されるDockerの概念に例えると、タスク定義はcompose.yaml(docker-compose.yaml)に、サービスはDockerデーモンに相当します。
@@ -130,13 +131,13 @@ ECSのデプロイは、以下のようなフローで実施されます。
 ecspressoでデプロイを行うには、以下のファイルが必要です。
 
 - ecspresso.yaml
-    - デプロイ先のクラスタ名やリージョン情報などを指定するために必要になります。
-    - [ドキュメントはこちら](https://github.com/kayac/ecspresso#configuration-file)
+    - デプロイ先のクラスタ名やリージョン情報などを指定するために必要。
+    - [ドキュメントはこちら](https://github.com/kayac/ecspresso#configuration-file)。
 - タスク定義のテンプレートファイル
-    - ecspressoがアップロードするために必要になります。
-    - jsonかyamlの任意の形式で用意します。
-    - [Goの text/template 構文](https://github.com/kayac/ecspresso#template-syntax) でenvなどからパラメータを後付けできます。
-    - [AWSの公式ドキュメント](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/example_task_definitions.html)を参考に書くのがおすすめです。
+    - ecspressoがアップロードするために必要。
+    - jsonかyamlの任意の形式で用意する。
+    - [Goの text/template 構文](https://github.com/kayac/ecspresso#template-syntax) でenvなどからパラメータを後付けできる。
+    - [AWSの公式ドキュメント](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/example_task_definitions.html)を参考に書くのがおすすめ。
 
 ##### サンプル
 以下は `ap-northeast-1` にある `iketeru-cluster` の `iketeru-service` に紐づいているタスク定義を更新したいときのecspresso.yamlの例です。
@@ -196,7 +197,8 @@ ecs-task-def.jsonは、以下のように設定します。
 
 #### ワークフローの作成
 前述の作業フローをGitHub Actionsのワークフローとしてざっくり実装してみると、以下のようになります。
-以下のワークフローでは、コードに載せるべきではない情報はGitHub Actionsのenv, secretsに保存して、必要に応じて環境変数に展開しています。
+以下のワークフローでは、コードに載せるべきではない情報をGitHub Actionsのenv, secretsに保存します。
+そして、必要なタイミングでWorkflow上の環境変数に展開しています。
 
 ```deploy.yaml
 name: deploy
@@ -255,9 +257,9 @@ jobs:
 
 
 ## まとめ
-以上がecspressoを使ってGitHub ActionsからECSにデプロイするために必要な設定になります。
+以上がecspressoを使ってGitHub ActionsからECSへデプロイするために必要な設定です。
 最小限のサンプルということもありますが、それを考慮してもかなりシンプルではないでしょうか。
 
-また、今回はデプロイツールとしてecspressoを扱いましたが、デプロイ以外のECSに対する操作を行うツールとしても非常に便利です。
+また、今回はデプロイツールとしてecspressoを扱いましたが、デプロイ以外のECSに対する操作するツールとしても非常に便利です。
 ぜひ、公式ドキュメントを参照して活用してみてください。
 
