@@ -9,14 +9,12 @@ const zenKurenaido = Zen_Kurenaido({
   style: 'normal',
 })
 
-export default async function RootLayout({
+export default async function PostLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ja" className={zenKurenaido.className}>
-      <Suspense fallback={null}>{children}</Suspense>
-    </html>
+      <>{children}</>
   );
 }
