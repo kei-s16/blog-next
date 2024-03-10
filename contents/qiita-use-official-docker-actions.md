@@ -59,9 +59,11 @@ Windows/Macの場合、最近のDocker Desktopに `buildx` がバンドルされ
 ### docker/metadata-action
 [docker/metadata-action](https://github.com/docker/metadata-action) はイメージ名・タグ・ラベルなどを管理しやすくするためのactionsです。
 
-設定した値はoutputとしてジョブ内で引き回され、後段の `docker/setup-buildx-action` で `${{ steps.{idの値に設定した名称}.outputs.tags }}`、`${{ steps.{idの値に設定した名称}.outputs.labels }}` などの形で参照します。
+設定した値はoutputとしてジョブ内で引き回されます。
+このoutputは後段の `docker/setup-buildx-action` で `${{ steps.{idの値に設定した名称}.outputs.tags }}`、`${{ steps.{idの値に設定した名称}.outputs.labels }}` などの形で参照します。
 
-このactionsを利用しなくても `docker/setup-buildx-action` で直接タグやラベルを設定することは可能ですが、痒いところに手が届く機能が多いので処理を分けておくのが無難だと思います。
+このactionsを利用しなくても `docker/setup-buildx-action` で直接タグやラベルを設定できます。
+ただ、値の受け渡し以外にも痒いところに手の届く機能が多いので処理を分けておくと無難だと思います。
 
 ### docker/build-push-action
 [docker/build-push-action](https://github.com/docker/build-push-action) は、イメージのビルドからレジストリへのプッシュまでを実行してくれるactionsです。
@@ -117,11 +119,13 @@ jobs:
 最新のコードは [kei-s16/ghcr-container-push-demo](https://github.com/kei-s16/ghcr-container-push-demo) で公開しています。
 
 ## おまけ : キャッシュを使う
-`buildx` を有効化しただけでも場合によっては数秒速くビルドができたりするのですが、ワークフローの実行単体で見ると `docker/setup-buildx-action`、 `docker/metadata-action` の実行分の時間も加算されるため、公式actionsを使わない場合と同じかそれより少し遅い程度になってしまうこともあります。
+じつは、`buildx` を有効化しただけでも場合によっては数秒速くビルドが終わることもあります。
+ただし、ビルドだけで見ると速く完了していても、ワークフローの実行全体で見ると公式actionsを使わない場合と同じかそれより少し遅い程度だったりします。
+これは、たいていの場合 `docker/setup-buildx-action`、 `docker/metadata-action` 実行時間が `buildx` での短縮分を上回るからです。
 
 そこで、ビルドキャッシュを使うようことで実行時間の短縮を目指します。
 
-以下の設定では、レジストリにビルド結果のイメージだけでなく、キャッシュ用のイメージもプッシュし、以降のビルド時に参照できるようにしています。
+以下の設定では、レジストリへビルド結果のイメージだけでなく、キャッシュ用のイメージもプッシュし、以降のビルド時で参照できるようにしています。
 
 ```push.yaml
 #(略)
@@ -137,9 +141,9 @@ jobs:
         cache-to: type=registry,ref=ghcr.io/kei-s16/ghcr-container-push-demo:buildcache,mode=max
 ```
 
-ただし、キャッシュを使うに際して注意が必要なことが2点あります。
+ただし、キャッシュを使うに際して注意点が2つあります。
 
-ひとつは、キャッシュをしっかり効かせるためにはDockerfileの整理が必要なケースがあることです。
+ひとつは、キャッシュをしっかり効かせるためには、多くの場合Dockerfileの整理が必要になることです。
 Dockerのキャッシュはレイヤーごとに効くのですが、記述の順番によってはまったくキャッシュの効かないイメージができあがったりします([公式ドキュメントを参照](https://docs.docker.com/build/cache/))。
 必要に応じて、十分にキャッシュが効くようにDockerfile内の処理順番を整理したり、ステージを分けたりしてあげるといいです。
 
