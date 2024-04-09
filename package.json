@@ -8,7 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint -f stylish ./modules ./app",
-    "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json}'"
+    "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json}'",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "keywords": [],
   "author": "kei-s16",
@@ -38,13 +40,24 @@
     "vite": "^5.1.7"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^1.3.2",
+    "@storybook/addon-essentials": "^8.0.6",
+    "@storybook/addon-interactions": "^8.0.6",
+    "@storybook/addon-links": "^8.0.6",
+    "@storybook/addon-onboarding": "^8.0.6",
+    "@storybook/blocks": "^8.0.6",
+    "@storybook/nextjs": "^8.0.6",
+    "@storybook/react": "^8.0.6",
+    "@storybook/test": "^8.0.6",
     "@types/node": "20.11.19",
     "@types/react": "18.2.55",
     "@types/rss": "^0.0.32",
     "eslint": "8.56.0",
     "eslint-config-next": "14.1.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-storybook": "^0.8.0",
     "prettier": "^3.2.5",
+    "storybook": "^8.0.6",
     "typescript": "5.3.3"
   },
   "pnpm": {
