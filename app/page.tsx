@@ -29,7 +29,7 @@ const Home: NextPage = ({
     <>
       <div className="grid grid-cols-1">
         {posts.map((post) => (
-          <Card {...post} key={post.url}></Card>
+          <Card {...post} key={post.url} />
         ))}
       </div>
       <Footer
