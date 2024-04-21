@@ -4,10 +4,6 @@ import Card from "./card";
 const meta = {
   title: 'article/components/card',
   component: Card,
-  parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-    layout: 'centered',
-  },
 } satisfies Meta<typeof Card>;
 
 export default meta;
@@ -19,6 +15,28 @@ export const Primary: Story = {
     title: "hogepiyo",
     date: "2022-12-10T19:00:00",
     tags: ["Qiita"],
+    category: "技術",
+    description: "2022年に買ってよかったものについてまとめています"
+  },
+};
+
+export const NoDescription: Story = {
+  args: {
+    url: "#",
+    title: "hogepiyo",
+    date: "2022-12-10T19:00:00",
+    tags: ["Qiita"],
     category: "技術"
   },
 };
+
+export const MultipleTags: Story = {
+  args: {
+    url: "#",
+    title: "hogepiyo",
+    date: "2022-12-10T19:00:00",
+    tags: ["Qiita", "GitHubActions"],
+    category: "技術"
+  },
+};
+
