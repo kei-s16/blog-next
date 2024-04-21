@@ -1,6 +1,6 @@
 import type { NextPage, Metadata } from "next";
-import Link from "next/link";
 import Card from "modules/article/components/card";
+import Footer from "modules/article/components/footer";
 import { getCurrentPage } from "modules/pages/functions";
 
 const TOP_PAGE_INDEX = 0;
@@ -32,17 +32,10 @@ const Home: NextPage = ({
           <Card {...post} key={post.url}></Card>
         ))}
       </div>
-      <div className="flex flex-row content-center justify-center">
-        <div className="basis-1/3 rounded-lg flex items-center justify-center">
-          {prev && <Link href={`/?page=${prev}`}>previous</Link>}
-        </div>
-        <div className="basis-1/3 rounded-lg flex items-center justify-center">
-          <Link href="/">◆</Link>
-        </div>
-        <div className="basis-1/3 rounded-lg flex items-center justify-center">
-          {next && <Link href={`/?page=${next}`}>next</Link>}
-        </div>
-      </div>
+      <Footer
+        prev={prev}
+        next={next}
+      />
     </>
   );
 };
