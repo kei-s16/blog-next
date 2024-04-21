@@ -20,17 +20,14 @@ const Card: React.FC<CardProps> = ({
 }) => {
   return (
     <>
-      <article>
-        <header>
-          <div className="flex flex-row">
-            <h3 className="basis-3/4 text-lg underline">
-              <Link href={`${url}`}>{title}</Link>
-            </h3>
-            <p className="basis-1/4 text-xs text-right">
-              {format(parseISO(date), "LLLL d, yyyy")}
-            </p>
-          </div>
-        </header>
+        <div className="flex flex-row">
+          <h3 className="basis-3/4 text-lg underline">
+            <Link href={`${url}`}>{title}</Link>
+          </h3>
+          <p className="basis-1/4 text-xs text-right">
+            {format(parseISO(date), "LLLL d, yyyy")}
+          </p>
+        </div>
         <div className="flex flex-row">
           <p className="mr-2 my-0 p-0">
             <span className="font-medium">category</span> :{" "}
@@ -52,7 +49,6 @@ const Card: React.FC<CardProps> = ({
             <span className="font-medium">description</span> : {description}
           </p>
         )}
-      </article>
     </>
   );
 };
