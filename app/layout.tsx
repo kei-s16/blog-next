@@ -1,5 +1,4 @@
 import { Zen_Kurenaido } from "next/font/google";
-import Head from "next/head";
 import Link from "next/link";
 import { Suspense } from "react";
 import "styles/globals.css";
@@ -22,15 +21,14 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="ja" className={zenKurenaido.className}>
-      <Head>
-        <title>{SITE_NAME}</title>
+      <head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <script
           data-goatcounter="https://k16em.goatcounter.com/count"
           async
           src="//gc.zgo.at/count.js"
         ></script>
-      </Head>
+      </head>
       <body className="space-y-4">
         <header>
           <h1>
