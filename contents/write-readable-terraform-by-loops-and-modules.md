@@ -1,6 +1,6 @@
 ---
 title: "モジュールとループを駆使して可読性の高いterraformを書きたい"
-date: "2024-04-21T19:00:00"
+date: "2024-05-01T22:00:00"
 description: "モジュールとループを駆使して可読性の高いterraformを目指したメモ"
 tags: ["terraform"]
 category: "技術"
