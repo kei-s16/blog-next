@@ -39,7 +39,9 @@ const Home: NextPage = ({
     <>
       <div className="grid grid-cols-1">
         {posts.map((post) => (
-          <Card {...post} key={post.url}></Card>
+          <article key={post.url} >
+            <Card {...post}/>
+          </article>
         ))}
       </div>
       <div className="flex flex-row content-center justify-center">
