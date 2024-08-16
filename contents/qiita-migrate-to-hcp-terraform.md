@@ -15,7 +15,7 @@ HCP TerraformはこれまでTerraform Cloudという名称のサービスでし�
 [Introducing The Infrastructure Cloud](https://www.hashicorp.com/blog/introducing-the-infrastructure-cloud)
 
 ## 前置き
-私の所属するチームでは、なるべくAWS SAMやTerraformといったIaCを使ってクラウド環境の設定を行うようにしています。
+私の所属するチームでは、なるべくAWS SAMやTerraformといったIaCを使ってクラウド環境の設定をするようにしています。
 主にレビューの利便性やオペレーションミスの防止を狙ってのIaC活用ですが、Terraformに関してはCI/CDが整備できておらず、反映コマンドは各メンバーの手元で、メンバーに強い権限を付与しての実行というかたちになってしまっています。
 今後はLambdaを活用したアプリケーションを除いてはなるべくTerraformに寄せていきたいという思惑があるなかで、なるべく早期に解決しておきたい課題ではありつつ、既存の環境には変更をいれづらく、なかなか解消できない状態でした。
 
@@ -101,7 +101,7 @@ terraform/*.tfstate
 terraform/.terraform/
 ```
 
-一点注意が必要なのは、`.gitignore` と違い、**ディレクトリをignoreする場合、末尾に `/` が必要になる**点です。
+一点注意が必要なのは、`.gitignore` と違い、**ディレクトリをignoreする場合、末尾に `/` が必要となる**点です。
 
 ## 感想
 上記の手順でHCP Terraformへの移行はある程度簡単に済ませることができます。
