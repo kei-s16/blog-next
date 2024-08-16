@@ -17,32 +17,19 @@ jobs:
       - name: "fetchする"
         run: git fetch
 
+      - name: "corepackの有効化"
+        run: corepack enable
       - name: "Node.jsのセットアップ"
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: "pnpmのセットアップ"
-        uses: pnpm/action-setup@v3
-        id: pnpm-install
-        with:
-          version: 8
-          run_install: false
+          cache: "pnpm"
+
       - name: "reviewdogのインストール"
         uses: reviewdog/action-setup@v1
         with:
           reviewdog_version: latest
 
-      - name: "pnpmのパッケージ保存先を保持"
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - name: "キャッシュを使う"
-        uses: actions/cache@v4
-        id: pnpm-cache-node_modules
-        with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: "パッケージのインストール"
         run: pnpm install
 
