@@ -78,8 +78,8 @@ dependencies:
     specifier: ^2.3.14
     version: 2.3.14(textlint@14.0.3)
   vite:
-    specifier: ^5.1.7
-    version: 5.1.7(@types/node@20.11.19)
+    specifier: ^5.1.8
+    version: 5.1.8(@types/node@20.11.19)
 
 devDependencies:
   '@chromatic-com/storybook':
@@ -13909,8 +13909,8 @@ packages:
       vfile-message: 4.0.2
     dev: false
 
-  /vite@5.1.7(@types/node@20.11.19):
-    resolution: {integrity: sha512-sgnEEFTZYMui/sTlH1/XEnVNHMujOahPLGMxn1+5sIT45Xjng1Ec1K78jRP15dSmVgg5WBin9yO81j3o9OxofA==}
+  /vite@5.1.8(@types/node@20.11.19):
+    resolution: {integrity: sha512-mB8ToUuSmzODSpENgvpFk2fTiU/YQ1tmcVJJ4WZbq4fPdGJkFNVcmVL5k7iDug6xzWjjuGDKAuSievIsD6H7Xw==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
