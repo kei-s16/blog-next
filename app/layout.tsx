@@ -1,10 +1,10 @@
-import { Zen_Kurenaido } from "next/font/google";
+import { M_PLUS_Rounded_1c } from "next/font/google";
 import Link from "next/link";
 import { Suspense } from "react";
 import "styles/globals.css";
 import "styles/style.css";
 
-const zenKurenaido = Zen_Kurenaido({
+const font = M_PLUS_Rounded_1c({
   subsets: ["latin"],
   weight: "400",
   style: "normal",
@@ -20,7 +20,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ja" className={zenKurenaido.className}>
+    <html lang="ja" className={font.className}>
       <head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <script
