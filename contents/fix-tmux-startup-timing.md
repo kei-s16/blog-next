@@ -5,6 +5,10 @@ tags: ["tmux", "zsh", "AdventCalendar2024"]
 category: "技術"
 ---
 
+この記事は[ひとりアドベントカレンダー(便秘解消)](/posts/advent-calendar-2024) DAY 1の記事です。  
+
+---
+
 ## tl;dr
 ログイン時にtmuxを自動で起動したい場合、起動スクリプトは `.zprofile` or `.zlogin` に書くのがよさそう  
 
@@ -19,6 +23,7 @@ category: "技術"
 - zsh
 - archlinux
   - `Linux worker01 6.8.12-4-pve #1 SMP PREEMPT_DYNAMIC PMX 6.8.12-4 (2024-11-06T15:04Z) x86_64 GNU/Linux`
+- SSHで出先から遊ぶサーバなので、X/Wayland環境はなし
 
 以下のansibleを実行して、日本語ロケールを生成済。  
 
