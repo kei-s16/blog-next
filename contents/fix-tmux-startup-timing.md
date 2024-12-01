@@ -1,6 +1,6 @@
 ---
 title: "tmuxの起動タイミングを変更した"
-date: "2024-12-01T15:00:00"
+date: "2024-12-01T22:15:00"
 tags: ["tmux", "zsh", "AdventCalendar2024"]
 category: "技術"
 ---
@@ -89,7 +89,7 @@ $ zsh -c "diff -ui <(sort tmp/env-first-tmux.txt) <(sort tmp/env-re-tmux.txt)"
 
 とあるので、LANGが設定されている以上詰みかと思われた。  
 が、ふと適当に前述したtmux起動スクリプトを `~/.zshrc` の末尾に移動してログインしなおしたところ、日本語が表示された。  
-neovimの `:h` もmanも読めた。  
+neovimの `:h` やmanもしっかり日本語で読めた。  
 
 もしやと思いzshの設定ファイルロード順を確認することにした。  
 
@@ -98,21 +98,24 @@ neovimの `:h` もmanも読めた。
 [zshのman](https://man.archlinux.org/man/zsh.1#STARTUP/SHUTDOWN_FILES)によると、ログイン時は以下の順で設定ファイルが読まれている
 
 1. /etc/zsh/zshenv
-1. $ZROOTDIR/.zshenv
+1. $ZDOTDIR/.zshenv
 1. /etc/zsh/zprofile
-1. $ZROOTDIR/.zprofile
+1. $ZDOTDIR/.zprofile
 1. /etc/zsh/zshrc
-1. $ZROOTDIR/.zshrc
+1. $ZDOTDIR/.zshrc
 1. /etc/zsh/zlogin
-1. $ZROOTDIR/.zlogin
+1. $ZDOTDIR/.zlogin
 
-自分の環境では、`ZROOTDIR` は明示的に指定していないので、`~/` になる
+自分の環境では、`ZDOTDIR` は明示的に指定していないので、`~/` になる
 
-今回、`zshenv` でtmuxを起動したところLANGが設定されていないような挙動を見せたため、そこを確認したい。  
+今回、`zshenv` でtmuxを起動したところ、その時点ではLANGが設定されていないような挙動を見せたため、そこを確認したい。  
+以下のスクリプトを`ZDOTDIR`の各設定ファイルに書けばログイン時の出力で必要最低限の出力が得られるはず。  
 
 ```zsh
 echo "LANG=$(echo $LANG) in .zprofile"
 ```
+
+結果は以下の通りで、やはりzshenvの段階でLANGが読めていなかった。  
 
 ```zsh
 LANG= in .zshenv
@@ -120,4 +123,33 @@ LANG=ja_JP.UTF-8 in .zprofile
 LANG=ja_JP.UTF-8 in .zshrc
 ```
 
+## 修正したこと
+ここまでの挙動から、`/etc/zsh/zshenv`, `$ZDOTDIR/.zshenv` の両方を処理したあとでtmuxを起動するのが確実そう。  
+
+以下の記事を読むと、実際zshenvには環境変数の設定だけを書いて、コマンド実行はなるべく避けたほうがよさそう、ということがわかる。  
+(つまりこれまでの設定はアンチパターンだったということ)  
+
+- https://wiki.archlinux.jp/index.php/Zsh#.E3.82.B9.E3.82.BF.E3.83.BC.E3.83.88.E3.82.A2.E3.83.83.E3.83.97.2F.E3.82.B7.E3.83.A3.E3.83.83.E3.83.88.E3.83.80.E3.82.A6.E3.83.B3_.E3.83.95.E3.82.A1.E3.82.A4.E3.83.AB
+- https://zsh.sourceforge.io/Guide/zshguide02.html
+
+というわけで、以下のスクリプトは最終的に `~/.zlogin` で書かれることになった。  
+
+```zsh
+# TMUX
+if which tmux >/dev/null 2>&1; then
+    # if no session is started, start a new session
+    test -z ${TMUX} && tmux
+
+    # when quitting tmux, try to attach
+    while test -z ${TMUX}; do
+        tmux attach || break
+    done
+fi
+```
+
+## 結論
+- zshenvにはパスの設定などの最低限の環境変数の設定を書く
+    - なぜなら、ここに書かれたことはシェルスクリプトでも読まれるから
+- CUIでしか使わない設定はzprofileに書く
+- 迷ったらいったんzshrcに書いておいて、あとで調べて書き直すのが無難
 
