@@ -16,6 +16,7 @@
   "author": "kei-s16",
   "license": "MIT",
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.15",
     "autoprefixer": "^10.4.18",
     "contentlayer": "^0.3.4",
     "date-fns": "^3.3.1",
